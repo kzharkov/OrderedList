@@ -31,10 +31,12 @@ namespace AlgorithmsDataStructures
 
         public int Compare(T v1, T v2)
         {
-            int result = 0;
+            int result;
             if (typeof(T) == typeof(String))
             {
-                result = String.Compare(v1 as String, v2 as String, StringComparison.OrdinalIgnoreCase);
+                result = String.Compare((v1 as String).Trim(), (v2 as String).Trim(), StringComparison.Ordinal);
+                if (result < 0) result = -1;
+                if (result > 0) result = 1;
             }
             else
             {
